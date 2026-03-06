@@ -1,0 +1,67 @@
+CC = gcc
+
+# -fsaniteze=address -g
+FLAGS = -Wall -Werror -Wextra
+NAME = libft.a
+BIN_DIR = bin
+EXE = $(addprefix $(BIN_DIR)/, run)
+
+SRCS = ft_isalpha.c \
+		ft_isdigit.c \
+		ft_isalnum.c \
+		ft_isprint.c \
+		ft_isascii.c \
+		ft_strlen.c \
+		ft_memset.c \
+
+OBJ_DIR = obj
+OBJ_FILES = $(addprefix $(OBJ_DIR)/, $(SRCS:.c=.o))
+
+# COMPILING AND CREATING THE LIB
+all: $(NAME)
+
+# here creates the archive, ar being the command
+# flags: c (creates) r (insert the files on it) s (creates a index)
+$(NAME): $(OBJ_FILES)
+	@ar rcs $@ $^
+	@echo "compiled" $?
+
+# rule just to create a dir for the objects
+$(OBJ_DIR):
+	@mkdir -p $@
+
+# here for each .o .c that shows pattern, will compile each time
+$(OBJ_DIR)/%.o: %.c libft.h | $(OBJ_DIR)
+	@$(CC) $(FLAGS) -c $< -o $@
+# -------
+
+# RUNNING
+# creates directory to put the executable
+# (-p used for when its called again, it does not create another dir and do not give an error)
+$(BIN_DIR):
+	@mkdir -p $@
+
+# run the code with the proper flags that calls the libft (lft)
+run: main.c $(NAME) | $(BIN_DIR)
+	@$(CC) $(FLAGS) $< -L. -lft -o $(EXE)
+# -------
+
+# CLEANING
+#clean the objects
+clean:
+	@rm -rf $(OBJ_DIR)
+	@echo "objs cleaned"
+
+# calls clean (then clean the objects), the archive and the out files
+fclean: clean
+	@rm -rf $(NAME) $(BIN_DIR)
+	@echo "$(NAME) $(BIN_DIR) cleaned"
+# -------
+
+# MISC
+# cleans everything then redo the process of all
+re: fclean all
+
+# safety mesuare, first to make those as "commands" so they will run just when being called
+# also do not conflit with files of same name (in case of files that have the same name)
+.PHONY: all re clean fclean
