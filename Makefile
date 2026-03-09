@@ -11,8 +11,12 @@ SRCS = ft_isalpha.c \
 		ft_isalnum.c \
 		ft_isprint.c \
 		ft_isascii.c \
-		ft_strlen.c \
-		ft_memset.c \
+		ft_strlen.c  \
+		ft_strchr.c  \
+		ft_strrchr.c \
+		ft_memset.c  \
+		ft_tolower.c \
+		ft_toupper.c \
 
 OBJ_DIR = obj
 OBJ_FILES = $(addprefix $(OBJ_DIR)/, $(SRCS:.c=.o))
@@ -42,7 +46,7 @@ $(BIN_DIR):
 	@mkdir -p $@
 
 # run the code with the proper flags that calls the libft (lft)
-run: main.c $(NAME) | $(BIN_DIR)
+run: tests/test_2.c $(NAME) | $(BIN_DIR)
 	@$(CC) $(FLAGS) $< -L. -lft -o $(EXE)
 # -------
 
