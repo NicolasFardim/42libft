@@ -1,7 +1,7 @@
 CC = gcc
 
-# -fsaniteze=address -g
-FLAGS = -Wall -Werror -Wextra
+# -fsaniteze=address
+FLAGS = -Wall -Werror -Wextra -g
 NAME = libft.a
 BIN_DIR = bin
 EXE = $(addprefix $(BIN_DIR)/, run)
@@ -14,6 +14,9 @@ SRCS = ft_isalpha.c \
 		ft_strlen.c  \
 		ft_strchr.c  \
 		ft_strrchr.c \
+		ft_strncmp.c \
+		ft_strlcat.c \
+		ft_strlcpy.c \
 		ft_memset.c  \
 		ft_tolower.c \
 		ft_toupper.c \
@@ -48,6 +51,7 @@ $(BIN_DIR):
 # run the code with the proper flags that calls the libft (lft)
 run: tests/test_2.c $(NAME) | $(BIN_DIR)
 	@$(CC) $(FLAGS) $< -L. -lft -o $(EXE)
+	@echo "main compiled"
 # -------
 
 # CLEANING
