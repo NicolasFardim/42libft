@@ -15,6 +15,7 @@ SRCS = ft_isalpha.c \
 		ft_strchr.c  \
 		ft_strrchr.c \
 		ft_strncmp.c \
+		ft_strnstr.c \
 		ft_strlcat.c \
 		ft_strlcpy.c \
 		ft_memset.c  \
@@ -50,7 +51,7 @@ $(BIN_DIR):
 
 # run the code with the proper flags that calls the libft (lft)
 run: tests/test_2.c $(NAME) | $(BIN_DIR)
-	@$(CC) $(FLAGS) $< -L. -lft -o $(EXE)
+	@$(CC) $(FLAGS) $< -lbsd -L. -lft -o $(EXE)
 	@echo "main compiled"
 # -------
 

@@ -1,6 +1,6 @@
 #include "libft.h"
 
-static	size_t	my_len(const char *s)
+static size_t	my_len(const char *s)
 {
 	size_t	i;
 
@@ -10,31 +10,35 @@ static	size_t	my_len(const char *s)
 	return (i);
 }
 
+// append N bytes of src into dst (size has to be at least size of dst).
 size_t	ft_strlcat(char *dst, const char *src, size_t size)
 {
-	size_t	i;
-	size_t	j;
+	size_t	src_len;
+	size_t	dst_len;
+	int	i;
 
+	src_len = my_len(src);
+	dst_len = my_len(dst);
+
+	if (!src || size <= dst_len)
+	{
+		return (src_len + size);
+	}
 	i = 0;
-	j = 0;
-	if (src[0] == '\0' || size == 0)
+	while (src[i] != '\0' && i + dst_len < size - 1)
 	{
-		dst[i] = '\0';
-		return (my_len(src));
-	}
-	// final carlos
-	while (dst[i] != '\0')
+		dst[i + dst_len] = src[i];
 		i++;
-
-	// começo joana
-	while (src[j] != '\0' && j + i < size - 1)
-	{
-		dst[j + i] = src[j];
-		j++;
 	}
-	dst[i + j] = '\0';
-	return (my_len(src) + size);
+	dst[i + dst_len] = '\0';
+	return (dst_len + src_len);
 }
 
+/*
+	return value of this function can be useful for check if the string was truncated.
+	if the return value is bigger than the size: string is fully concatenated.
+	if equall or smaller is truncated.
 
-// VER DEPOIS
+	if src is empty or the size is not enough for dst, it will do nothing and return
+	the (size + lenght of src) why? idk
+*/

@@ -1,6 +1,6 @@
 #include "libft.h"
 
-static	size_t	my_len(const char *s)
+static size_t	my_len(const char *s)
 {
 	size_t	i;
 
@@ -10,6 +10,7 @@ static	size_t	my_len(const char *s)
 	return (i);
 }
 
+// cpy
 size_t	ft_strlcpy(char *dst, const char *src, size_t size)
 {
 	size_t	i;

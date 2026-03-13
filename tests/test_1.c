@@ -2,9 +2,9 @@
 #include <stdlib.h>
 #include <string.h>
 #include <ctype.h>
-#include "/home/nicolas/Codes/42c/libft/libft.h"
+#include "../libft.h"
 
-// tests for char
+// tests for check
 int	main(int argc, char **argv)
 {
 	(void)argc;

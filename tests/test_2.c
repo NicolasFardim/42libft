@@ -10,8 +10,8 @@ int	main(int argc, char **argv)
 	(void)argc;
 	char	*str1 = "";
 	char	*str2 = "";
-	char	strct[256] = "tes";
-	char	strct2[256] = "tes";
+	char	*strct = "";
+	char	*strct2 = "";
 	char	cpyto[256];
 	char	cpy2to[256];
 	int c = 0;
@@ -21,6 +21,8 @@ int	main(int argc, char **argv)
 		str1 = argv[1];
 	if (argc >= 3) {
 			str2 = argv[2];
+			strct = strdup(str2);
+			strct2 = strdup(str2);
 		};
 	if (argc >= 4)
 		i = atoi(argv[3]);
@@ -40,4 +42,8 @@ int	main(int argc, char **argv)
 	printf("STRLCPY_MYVERSION: return value: %ld  | copied string:   %s\n", ft_strlcpy(cpy2to, str1, i), cpy2to);
 	printf("STRLCAT_ORIGINAL: return value:  %ld  | concat string:   %s\n", strlcat(strct, str1, i), strct);
 	printf("STRLCAT_MYVERSION: return value: %ld  | concat string:   %s\n", ft_strlcat(strct2, str1, i), strct2);
+	printf("STRNSTR_ORIGINAL:   %s\n", strnstr(str1, str2, i));
+	printf("STRNSTR_MYVERSION:  %s\n", ft_strnstr(str1, str2, i));
+	free (strct);
+	free (strct2);
 }
