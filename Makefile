@@ -50,7 +50,7 @@ $(BIN_DIR):
 	@mkdir -p $@
 
 # run the code with the proper flags that calls the libft (lft)
-run: tests/test_2.c $(NAME) | $(BIN_DIR)
+run: tests/mem_tests.c $(NAME) | $(BIN_DIR)
 	@$(CC) $(FLAGS) $< -lbsd -L. -lft -o $(EXE)
 	@echo "main compiled"
 # -------
