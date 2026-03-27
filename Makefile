@@ -1,7 +1,6 @@
 CC = gcc
 
-# -fsaniteze=address
-FLAGS = -Wall -Werror -Wextra -g
+FLAGS = -Wall -Werror -Wextra -fsanitize=address -g
 NAME = libft.a
 BIN_DIR = bin
 EXE = $(addprefix $(BIN_DIR)/, run)
@@ -24,6 +23,7 @@ SRCS = ft_isalpha.c \
 		ft_bzero.c   \
 		ft_tolower.c \
 		ft_toupper.c \
+		ft_calloc.c  \
 
 OBJ_DIR = obj
 OBJ_FILES = $(addprefix $(OBJ_DIR)/, $(SRCS:.c=.o))
@@ -53,7 +53,7 @@ $(BIN_DIR):
 	@mkdir -p $@
 
 # run the code with the proper flags that calls the libft (lft)
-run: tests/mem_tests.c $(NAME) | $(BIN_DIR)
+run: tests/alloc_tests.c $(NAME) | $(BIN_DIR)
 	@$(CC) $(FLAGS) $< -lbsd -L. -lft -o $(EXE)
 	@echo "main compiled"
 # -------
