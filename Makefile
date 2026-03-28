@@ -24,6 +24,7 @@ SRCS = ft_isalpha.c \
 		ft_tolower.c \
 		ft_toupper.c \
 		ft_calloc.c  \
+		ft_strdup.c  \
 
 OBJ_DIR = obj
 OBJ_FILES = $(addprefix $(OBJ_DIR)/, $(SRCS:.c=.o))

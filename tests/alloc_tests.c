@@ -18,11 +18,15 @@ static void	mem_print_test(void *data, size_t size, size_t len)
 int	main() {
 	char	*str1 = calloc(10, sizeof(char));
 	char	*str2 = ft_calloc(10, sizeof(char));
-
+	char	str3[] = "Copiateste";
+	char	*str4 = ft_strdup(str3);
 	mem_print_test(str2, sizeof(char), 10);
 	printf("\n");
 	mem_print_test(str1, sizeof(char), 10);
+	printf("\n%s", str4);
+
 	free(str1);
 	free(str2);
+	free(str4);
 	return (0);
 }
