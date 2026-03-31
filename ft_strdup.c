@@ -16,6 +16,8 @@ static size_t my_strlen(const char *s)
 	size_t	i;
 
 	dup_str = malloc(my_strlen(s) * sizeof(char));
+	if (!dup_str)
+		return (NULL);
 	i = 0;
 	while (s[i])
 	{
