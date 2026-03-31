@@ -25,6 +25,9 @@ SRCS = ft_isalpha.c \
 		ft_toupper.c \
 		ft_calloc.c  \
 		ft_strdup.c  \
+		ft_substr.c  \
+		ft_strjoin.c \
+		ft_strtrim.c \
 
 OBJ_DIR = obj
 OBJ_FILES = $(addprefix $(OBJ_DIR)/, $(SRCS:.c=.o))
@@ -54,7 +57,7 @@ $(BIN_DIR):
 	@mkdir -p $@
 
 # run the code with the proper flags that calls the libft (lft)
-run: tests/alloc_tests.c $(NAME) | $(BIN_DIR)
+run: tests/stralloc_test.c $(NAME) | $(BIN_DIR)
 	@$(CC) $(FLAGS) $< -lbsd -L. -lft -o $(EXE)
 	@echo "main compiled"
 # -------
