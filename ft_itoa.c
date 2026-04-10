@@ -1,4 +1,26 @@
 #include "libft.h"
+
+int ft_tamanho(int n)
+{
+    long int f;
+    int tamanho;
+    
+    f = n;
+    tamanho = 0;
+    if(f <= 0)
+    {
+        tamanho = 1;
+    }
+    if (f < 0)
+        f = -f;
+    while(f > 0)
+    {
+        f /= 10;
+        tamanho++;
+    }
+    return(tamanho);
+}
+
 char *ft_itoa(int n)
 {
     char *s;
@@ -26,25 +48,4 @@ char *ft_itoa(int n)
         g /= 10;
     }
     return(s);
-}
-
-int ft_tamanho(int n)
-{
-    long int f;
-    int tamanho;
-    
-    f = n;
-    tamanho = 0;
-    if(f <= 0)
-    {
-        tamanho = 1;
-    }
-    if (f < 0)
-        f = -f;
-    while(f > 0)
-    {
-        f /= 10;
-        tamanho++;
-    }
-    return(tamanho);
 }

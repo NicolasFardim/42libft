@@ -44,17 +44,14 @@ OBJ_FILES = $(addprefix $(OBJ_DIR)/, $(SRCS:.c=.o))
 # COMPILING AND CREATING THE LIB
 all: $(NAME)
 
-# here creates the archive, ar being the command
-# flags: c (creates) r (insert the files on it) s (creates a index)
+
 $(NAME): $(OBJ_FILES)
 	@ar rcs $@ $^
 	@echo "compiled" $?
 
-# rule just to create a dir for the objects
 $(OBJ_DIR):
 	@mkdir -p $@
 
-# here for each .o .c that shows pattern, will compile each time
 $(OBJ_DIR)/%.o: %.c libft.h | $(OBJ_DIR)
 	@$(CC) $(FLAGS) -c $< -o $@
 # -------
