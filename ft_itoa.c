@@ -8,6 +8,8 @@ char *ft_itoa(int n)
     g = n;
     h = ft_tamanho(n);
     s = malloc(sizeof(char) * (h + 1));
+    if (!s)
+    return (NULL);
     if(g < 0)
     {
         s[0] = '-';
