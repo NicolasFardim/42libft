@@ -1,6 +1,7 @@
 CC = gcc
 
 FLAGS = -Wall -Werror -Wextra -fsanitize=address -g
+
 NAME = libft.a
 BIN_DIR = bin
 EXE = $(addprefix $(BIN_DIR)/, run)
@@ -25,6 +26,7 @@ SRCS = ft_isalpha.c \
 		ft_toupper.c \
 		ft_calloc.c  \
 		ft_strdup.c  \
+		ft_substr.c  \
 		ft_strjoin.c \
 		ft_strtrim.c \
 		ft_putstr_fd.c \
@@ -33,9 +35,8 @@ SRCS = ft_isalpha.c \
 		ft_putchar_fd.c \
 		ft_striteri.c \
 		ft_strmapi.c \
+		ft_split.c \
 		ft_itoa.c \
-
-
 
 OBJ_DIR = obj
 OBJ_FILES = $(addprefix $(OBJ_DIR)/, $(SRCS:.c=.o))
