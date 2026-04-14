@@ -5,7 +5,7 @@
 	if (len == 0 || start > my_strlen(s))
 		return (rstr); */
 /* also this function uses len to make the allocation, but if i but 1000 or it
-allocate 1000 even if the substring is just 5 byes (it works not sure if is
+allocate 1000 even if the substring is just 5 byes (it works not sure if it is
 is optimal)*/
 
 char	*ft_substr(char const *s, unsigned int start, size_t len)
