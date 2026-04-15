@@ -37,6 +37,15 @@ SRCS = ft_isalpha.c \
 		ft_strmapi.c \
 		ft_split.c \
 		ft_itoa.c \
+		ft_lstnew.c \
+		ft_lstadd_front.c \
+		ft_lstsize.c \
+		ft_lstlast.c \
+		ft_lstadd_back.c \
+		ft_lstdelone.c \
+		ft_lstclear.c \
+		ft_lstiter.c \
+
 
 OBJ_DIR = obj
 OBJ_FILES = $(addprefix $(OBJ_DIR)/, $(SRCS:.c=.o))
@@ -57,7 +66,7 @@ $(OBJ_DIR)/%.o: %.c libft.h | $(OBJ_DIR)
 $(BIN_DIR):
 	@mkdir -p $@
 
-run: tests/stralloc_test.c $(NAME) | $(BIN_DIR)
+run: tests/main.c $(NAME) | $(BIN_DIR)
 	@$(CC) $(FLAGS) $< -lbsd -L. -lft -o $(EXE)
 	@echo "main compiled"
 
