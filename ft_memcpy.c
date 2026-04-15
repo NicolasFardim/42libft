@@ -1,6 +1,6 @@
 #include "libft.h"
 
-void *ft_memcpy(void *dest, const void *src, size_t n)
+void	*ft_memcpy(void *dest, const void *src, size_t n)
 {
 	//no fundo um strcopy mas temos qwue tratar os bytes por isso o unsigned char para ignorar sinais e ser apenas 1 bite)
 	size_t			i;
