@@ -1,51 +1,56 @@
 #include "libft.h"
 
-int ft_tamanho(int n)
+static size_t	count_place_value(long int n)
 {
-    long int f;
-    int tamanho;
-    
-    f = n;
-    tamanho = 0;
-    if(f <= 0)
-    {
-        tamanho = 1;
-    }
-    if (f < 0)
-        f = -f;
-    while(f > 0)
-    {
-        f /= 10;
-        tamanho++;
-    }
-    return(tamanho);
+	size_t	place_value;
+
+	place_value = 1;
+	if (n < 0)
+	{
+		n = -n;
+		place_value++;
+	}
+	while(n > 9)
+	{
+		n /= 10;
+		place_value++;
+	}
+	return (place_value);
 }
 
-char *ft_itoa(int n)
+char	*convert_to_char(char *s_nbr, long int n, size_t place_v)
 {
-    char *s;
-    long int g;
-    int h;
+	s_nbr[place_v] = '\0';
+	place_v--;
+	if (n == 0)
+	{
+		s_nbr[0] = '0';
+		return(s_nbr);
+	}
+	if (n < 0)
+	{
+		n = -n;
+		s_nbr[0] = '-';
+	}
+	while (n > 0)
+	{
+		s_nbr[place_v] = (n % 10) + '0';
+		n /= 10;
+		place_v--;
+	}
+	return(s_nbr);
+}
 
-    g = n;
-    h = ft_tamanho(n);
-    s = malloc(sizeof(char) * (h + 1));
-    if (!s)
-    return (NULL);
-    if(g < 0)
-    {
-        s[0] = '-';
-        g = -g;
-    }
-    if(g == 0)
-    {
-        s[0] = '0';
-    }
-    s[h] = '\0';
-    while(g > 0)
-    {
-        s[--h] = (g % 10) + '0';
-        g /= 10;
-    }
-    return(s);
+char	*ft_itoa(int n)
+{
+	char		*nbr_str;
+	long int	number;
+	size_t		place_value_size;
+
+	number = n;
+	place_value_size = count_place_value(number);
+	nbr_str = malloc((place_value_size + 1) * sizeof(char));
+	if (!nbr_str)
+		return (NULL);
+	return(convert_to_char(nbr_str, number, place_value_size));
 }

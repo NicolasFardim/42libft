@@ -1,26 +1,27 @@
 #include "libft.h"
 
-int	ft_atoi(const char *str)
+// convert a string into an integer
+int	ft_atoi(const char	*str)
 {
-	int	c;
-	int	simbolo;
-	int	res;
+	int	i;
+	int	signal;
+	int	result;
 
-	res = 0;
-	simbolo = 1;
-	c = 0;
-	while ((str[c] >= 9 && str[c] <= 13) || str[c] == 32)
-		c++;
-	if (str[c] == '+' || str[c] == '-')
+	result = 0;
+	signal = 1;
+	i = 0;
+	while ((str[i] >= 9 && str[i] <= 13) || str[i] == 32)
+		i++;
+	if (str[i] == '+' || str[i] == '-')
 	{
-		if (str[c] == '-')
-			simbolo = -1;
-		c++;
+		if (str[i] == '-')
+			signal = -1;
+		i++;
 	}
-	while (str[c] >= '0' && str[c] <= '9')
+	while (ft_isdigit(str[i]))
 	{
-		res = (res * 10) + (str[c] - '0');
-		c++;
+		result = (result * 10) + (str[i] - '0');
+		i++;
 	}
-	return (res * simbolo);
+	return (result * signal);
 }

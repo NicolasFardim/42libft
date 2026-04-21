@@ -1,15 +1,5 @@
 #include "libft.h"
 
-size_t	my_strlen(const char *s)
-{
-	int	i;
-
-	i = 0;
-	while(s[i])
-		i++;
-	return (i);
-}
-
 char	*ft_strjoin(const char *s1, const char *s2)
 {
 	char	*rstr;
@@ -17,7 +7,7 @@ char	*ft_strjoin(const char *s1, const char *s2)
 	size_t	cpy_i;
 
 
-	rstr = malloc((my_strlen(s1) + my_strlen(s2) + 1) * sizeof(char));
+	rstr = malloc((ft_strlen(s1) + ft_strlen(s2) + 1) * sizeof(char));
 	if (!rstr)
 		return (NULL);
 	cpy_i = 0;
