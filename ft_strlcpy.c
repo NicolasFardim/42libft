@@ -6,7 +6,9 @@ size_t	ft_strlcpy(char *dst, const char *src, size_t size)
 	size_t	i;
 
 	i = 0;
-	if(!src || !size)
+	if (!size)
+		return (ft_strlen((src)));
+	if(!src)
 	{
 		dst[i] = '\0';
 		return(0);

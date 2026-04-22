@@ -13,7 +13,7 @@ char *ft_strrchr(const char *s, int c)
 	find = NULL;
 	while (s[i])
 	{
-		if (s[i] == c)
+		if (s[i] == (unsigned char)c)
 		{
 			// everytime it found the occurence it points there
 			find = (char *)&s[i];
@@ -22,7 +22,7 @@ char *ft_strrchr(const char *s, int c)
 	}
 
 	// same thing of strchr
-	if (c == '\0')
+	if ((unsigned char)c == '\0')
 		return ((char *)&s[i]);
 
 	/* returns find, that can be pointing to the last occurrence of 'c' or

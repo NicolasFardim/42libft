@@ -12,9 +12,10 @@ size_t	ft_strlcat(char *dst, const char *src, size_t size)
 
 	/* if src is NULL or size is smaller or equal to dst this function does
 	 nothing and return the size of src + the size of the parameter */
-	if (!src || size < dst_len)
+	if (!src || size <= dst_len)
+	{
 		return (src_len + size);
-
+	}
 	// here work just like strncat but size - 1 because of the NULL byte
 	i = 0;
 	while (src[i] != '\0' && i + dst_len < size - 1)

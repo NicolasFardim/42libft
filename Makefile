@@ -1,8 +1,8 @@
 CC = gcc
-FLAGS = -Wall -Werror -Wextra -fsanitize=address -g
+FLAGS = -Wall -Werror -Wextra # -fsanitize=address -g
 NAME = libft.a
 BIN_DIR = bin
-EXE = $(addprefix $(BIN_DIR)/, run)
+OBJ_DIR = obj
 
 SRCS = ft_isalpha.c \
 		ft_isdigit.c \
@@ -48,7 +48,7 @@ SRCS = ft_isalpha.c \
 		ft_lstiter.c \
 		ft_lstmap.c \
 
-OBJ_DIR = obj
+EXE = $(addprefix $(BIN_DIR)/, run)
 OBJ_FILES = $(addprefix $(OBJ_DIR)/, $(SRCS:.c=.o))
 
 all: $(NAME)

@@ -1,6 +1,8 @@
 #include "../libft.h"
 #include <stdio.h>
+#include <bsd/string.h>
 #include <ctype.h>
+#include <limits.h>
 
 void	print_list(t_list *Head) {
 	for (t_list *current = Head; current != NULL; current=current->next)
@@ -34,11 +36,12 @@ void	*to_up(void *c)
 }
 
 
-int	main (int argc, char **argv) {
-	t_list	*Head = init_lst(argc - 1, &argv[1]);
-	t_list	*New_Node = ft_lstmap(Head, to_up, free);
-	print_list(Head);
-	print_list(New_Node);
-	ft_lstclear(&Head, free);
-	ft_lstclear(&New_Node, free);
+int	main () {
+	int *arr = calloc(0, sizeof(int));
+	int *arr2 = ft_calloc(0, sizeof(int));
+
+	printf("%p", arr);
+	printf("\n%p", arr2);
+	free(arr);
+	free(arr2);
 }
