@@ -1,29 +1,38 @@
 #include "libft.h"
 
-/* add this guard later, maybe for start be higher then the string and
-	len being 0
-	if (len == 0 || start > my_strlen(s))
-		return (rstr); */
-/* also this function uses len to make the allocation, but if i but 1000 or it
-allocate 1000 even if the substring is just 5 byes (it works not sure if it is
-is optimal)*/
+char	*create_substr(const char *str, char *sub, size_t start, size_t len)
+{
+	size_t	i;
+
+	i = 0;
+	while(str[start] && i < len)
+	{
+		sub[i] = str[start];
+		start++;
+		i++;
+	}
+	sub[i] = '\0';
+	return (sub);
+}
 
 char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
 	char	*rstr;
-	int	i;
+	size_t	str_len;
 
+	str_len = ft_strlen(s);
+	if (len == 0 || start >= str_len)
+	{
+		rstr = malloc(1);
+		if (!rstr)
+			return (NULL);
+		rstr[0] = '\0';
+		return (rstr);
+	}
+	if (len > str_len - start)
+		len = str_len - start;
 	rstr = malloc((len + 1) * sizeof(char));
 	if (!rstr)
 		return (NULL);
-	i = 0;
-	while (s[start] != '\0' && len)
-	{
-		rstr[i] = s[start];
-		start++;
-		len--;
-		i++;
-	}
-	rstr[i] = '\0';
-	return (rstr);
+	return (create_substr(s, rstr, (size_t)start, len));
 }

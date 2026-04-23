@@ -1,5 +1,6 @@
 #include "libft.h"
 #include <stdio.h>
+#include <malloc.h>
 
 // simply gets the size of the substring
 static size_t	get_substr_size(const char *s, char c)
@@ -82,6 +83,19 @@ static const char	*jump_word(const char *s, char c)
 	return(s);
 }
 
+static void	free_vec(char **vec)
+{
+	size_t	i;
+
+	i = 0;
+	while (vec[i])
+	{
+		free(vec[i]);
+		i++;
+	}
+	free(vec);
+}
+
 // takes a string and transform into a vector by using 'c' as the delimeter
 char **ft_split(char const *s, char c)
 {
@@ -89,6 +103,14 @@ char **ft_split(char const *s, char c)
 	size_t	i;
 	size_t	size;
 
+	if (!s || (!c && !*s))
+	{
+		split_str = malloc(sizeof(*split_str));
+		if (!split_str)
+			return (NULL);
+		split_str[0] = NULL;
+		return (split_str);
+	}
 	// the size is basically how many "words" there is in the string.
 	size = count_words(s, c);
 
@@ -97,7 +119,6 @@ char **ft_split(char const *s, char c)
 	one becauseof the last element of the vector that has to be a NULL,
 	multiplying all that by a char to a pointer */
 	split_str = malloc((size + 1) * sizeof(*split_str));
-
 	i = 0;
 
 	/* if there is delimiters on the begginning this loop will jump them
@@ -110,12 +131,15 @@ char **ft_split(char const *s, char c)
 		substr makes the allocation for me, i just need to specify the string
 		itself, where to start, and how many chars to get */
 		split_str[i] = ft_substr(s, 0, get_substr_size(s, c));
-
+		if (!split_str[i])
+		{
+			free_vec(split_str);
+			return (NULL);
+		}
 		// here jump for the next word
 		s = jump_word(s, c);
 		i++;
 	}
-
 	// the last element receive NULL
 	split_str[i] = NULL;
 	return (split_str);

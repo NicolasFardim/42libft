@@ -3,6 +3,8 @@
 #include <bsd/string.h>
 #include <ctype.h>
 #include <limits.h>
+#include <string.h>
+#include <malloc.h>
 
 void	print_list(t_list *Head) {
 	for (t_list *current = Head; current != NULL; current=current->next)
@@ -35,13 +37,25 @@ void	*to_up(void *c)
 	return (str);
 }
 
+static	void	free_vec(char **vec)
+{
+	size_t	i;
+
+	i = 0;
+	while (vec[i])
+	{
+		free(vec[i]);
+		i++;
+	}
+	free(vec);
+}
+
 
 int	main () {
-	int *arr = calloc(0, sizeof(int));
-	int *arr2 = ft_calloc(0, sizeof(int));
+	char **vec = ft_split("aaaaaaaaaaaa", '\0');
 
-	printf("%p", arr);
-	printf("\n%p", arr2);
-	free(arr);
-	free(arr2);
+	printf("\n\n///MAIN///\n");
+	for (size_t i = 0; vec[i]; i++)
+		printf("%s\n", vec[i]);
+	free_vec(vec);
 }
