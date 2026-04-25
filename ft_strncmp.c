@@ -1,15 +1,25 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_strncmp.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: nicolas <nicolas@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/04/25 15:19:15 by nicolas           #+#    #+#             */
+/*   Updated: 2026/04/25 16:34:59 by nicolas          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
 
-// compare n bytes of both strings
-int ft_strncmp(const char *s1, const char *s2, size_t n)
+int	ft_strncmp(const char *s1, const char *s2, size_t n)
 {
-	size_t i;
+	size_t	i;
 
 	i = 0;
-	// run while s1 and s2 still valid, and until n - 1 (-1 to synch with index)
 	if (n == 0)
 		return (0);
-	while(i < n - 1 && (s1[i] && s2[i]))
+	while (i < n - 1 && (s1[i] && s2[i]))
 	{
 		if (s1[i] != s2[i])
 			return ((unsigned char)s1[i] - (unsigned char)s2[i]);
@@ -17,11 +27,3 @@ int ft_strncmp(const char *s1, const char *s2, size_t n)
 	}
 	return ((unsigned char)s1[i] - (unsigned char)s2[i]);
 }
-
-/*
-	return value will be 0 (both strings are equal)
-	or a positive or negative number.
-	according with the ascii table:
-	if return positive it means s1 is bigger than s2
-	if negative it means s2 is bigger than s1
-*/

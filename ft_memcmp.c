@@ -1,21 +1,31 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_memcmp.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: nicolas <nicolas@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/04/24 13:23:44 by nicolas           #+#    #+#             */
+/*   Updated: 2026/04/25 16:44:10 by nicolas          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
 
-//e basicamente um strcmp so que n colocamos o caracter nulo como parametro para parar pq o nulo na memoria e so mais um caracter
-// foi o que errei mas de resto e exatamente igual ao strcmp
 int	ft_memcmp(const void *s1, const void *s2, size_t n)
 {
-	unsigned char* s;
-	unsigned char* p;
-	size_t i;
+	unsigned char	*s;
+	unsigned char	*p;
 
-	s = (unsigned char*) s1;
-	p = (unsigned char*) s2;
-	i = 0;
-	while(i < n )
+	s = (unsigned char *)s1;
+	p = (unsigned char *)s2;
+	while (n)
 	{
-		if (s[i] != p[i])
-			return (s[i] - p[i]);
-		i++;
+		if (*s != *p)
+			return (*s - *p);
+		s++;
+		p++;
+		n--;
 	}
-	return(0);
+	return (0);
 }

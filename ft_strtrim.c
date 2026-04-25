@@ -1,12 +1,23 @@
-#include "libft.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_strtrim.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: nicolas <nicolas@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/04/25 15:24:42 by nicolas           #+#    #+#             */
+/*   Updated: 2026/04/25 16:54:10 by nicolas          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
+#include "libft.h"
 
 static unsigned int	check_set(const char c, const char *set)
 {
 	size_t	i;
 
 	i = 0;
-	while(set[i] != '\0')
+	while (set[i] != '\0')
 	{
 		if (c == set[i])
 			return (1);
@@ -22,7 +33,7 @@ static size_t	trimmed_size(const char *s1, const char *set)
 
 	i = 0;
 	size = 0;
-	while(s1[i])
+	while (s1[i])
 	{
 		if (!check_set(s1[i], set))
 			size++;

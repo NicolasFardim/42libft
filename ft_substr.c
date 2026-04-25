@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_substr.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: nicolas <nicolas@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/04/25 15:25:28 by nicolas           #+#    #+#             */
+/*   Updated: 2026/04/25 16:55:24 by nicolas          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
 
 char	*create_substr(const char *str, char *sub, size_t start, size_t len)
@@ -5,7 +17,7 @@ char	*create_substr(const char *str, char *sub, size_t start, size_t len)
 	size_t	i;
 
 	i = 0;
-	while(str[start] && i < len)
+	while (str[start] && i < len)
 	{
 		sub[i] = str[start];
 		start++;

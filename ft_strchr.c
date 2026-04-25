@@ -1,7 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_strchr.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: nicolas <nicolas@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/04/25 15:11:08 by nicolas           #+#    #+#             */
+/*   Updated: 2026/04/25 15:11:10 by nicolas          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
 
-// return a pointer of the first occurrence of 'c'
-char *ft_strchr(const char *s, int c)
+char	*ft_strchr(const char *s, int c)
 {
 	int	i;
 
@@ -14,12 +25,7 @@ char *ft_strchr(const char *s, int c)
 			return ((char *)&s[i]);
 		i++;
 	}
-	/* the NULL is considered part of the string, so return a pointer for it
-	(return a pointer to the last byte that is where NULL terminator lives)
-	i could try "return((char *)&s[ft_strlen(s)]) and move this up later" */
 	if ((unsigned char)c == '\0')
 		return ((char *)&s[i]);
-
-	// if nothing is found, return NULL
 	return (NULL);
 }

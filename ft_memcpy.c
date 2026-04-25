@@ -1,22 +1,32 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_memcpy.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: nicolas <nicolas@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/04/24 13:24:18 by nicolas           #+#    #+#             */
+/*   Updated: 2026/04/25 16:50:42 by nicolas          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
 
 void	*ft_memcpy(void *dest, const void *src, size_t n)
 {
-	//no fundo um strcopy mas temos qwue tratar os bytes por isso o unsigned char para ignorar sinais e ser apenas 1 bite)
-	size_t			i;
 	unsigned char	*d;
 	unsigned char	*s;
 
-	//protejer caso a moradas n existem, funcao original
-	if(!src && !dest)
-		return(0);
-	s = (unsigned char*) src;
-	d = (unsigned char*) dest;
-	i = 0;
-	while(i < n)
+	if (!src && !dest)
+		return (0);
+	s = (unsigned char *)src;
+	d = (unsigned char *)dest;
+	while (n)
 	{
-		d[i] = s[i];
-		i++;
+		*d = *s;
+		d++;
+		s++;
+		n--;
 	}
-	return(dest);
+	return (dest);
 }

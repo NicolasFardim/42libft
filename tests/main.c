@@ -52,10 +52,6 @@ static	void	free_vec(char **vec)
 
 
 int	main () {
-	char **vec = ft_split("aaaaaaaaaaaa", '\0');
-
-	printf("\n\n///MAIN///\n");
-	for (size_t i = 0; vec[i]; i++)
-		printf("%s\n", vec[i]);
-	free_vec(vec);
+	t_list * l =  NULL; t_list * l2 =  NULL;
+	ft_lstadd_back(NULL, ft_lstnew((void*)1));
 }

@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_strnstr.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: nicolas <nicolas@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/04/25 15:19:37 by nicolas           #+#    #+#             */
+/*   Updated: 2026/04/25 16:36:14 by nicolas          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
 
 char	*ft_strnstr(const char *big, const char *little, size_t len)
@@ -17,5 +29,5 @@ char	*ft_strnstr(const char *big, const char *little, size_t len)
 			return ((char *)&big[i]);
 		i++;
 	}
-	return(NULL);
+	return (NULL);
 }

@@ -1,20 +1,30 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_memchr.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: nicolas <nicolas@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/04/24 13:22:17 by nicolas           #+#    #+#             */
+/*   Updated: 2026/04/25 16:45:19 by nicolas          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
 
-//msm teoria de um strchr so que retornarmos um ponteiro de onde esta aquele int
 void	*ft_memchr(const void *src, int c, size_t n)
 {
-	unsigned char *s;
-	unsigned char x;
-	size_t i;
+	unsigned char	*s;
+	unsigned char	x;
 
-	s = (unsigned char*) src;
-	x = (unsigned char) c;
-	i = 0;
-	while(i < n)
+	s = (unsigned char *)src;
+	x = (unsigned char )c;
+	while (n)
 	{
-		if(s[i] == x)
-			return(&s[i]);
-		i++;
+		if (*s == x)
+			return ((void *)s);
+		s++;
+		n--;
 	}
-	return(0);
+	return (0);
 }
