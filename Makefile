@@ -1,5 +1,5 @@
 CC = gcc
-FLAGS = -Wall -Werror -Wextra # -fsanitize=address -g
+FLAGS = -Wall -Werror -Wextra -fsanitize=address -g
 NAME = libft.a
 BIN_DIR = bin
 OBJ_DIR = obj
