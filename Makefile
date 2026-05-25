@@ -1,5 +1,5 @@
 CC = gcc
-FLAGS = -Wall -Werror -Wextra -fsanitize=address -g
+FLAGS = -Wall -Werror -Wextra
 NAME = libft.a
 BIN_DIR = bin
 OBJ_DIR = obj
@@ -33,6 +33,7 @@ SRCS =	ctype/ft_isalnum.c \
 		ft_string/ft_strmapi.c \
 		ft_string/ft_strtrim.c \
 		ft_string/ft_substr.c \
+		ft_string/ft_itoa.c \
 		ft_put/ft_putchar_fd.c \
 		ft_put/ft_putendl_fd.c \
 		ft_put/ft_putnbr_fd.c \
@@ -47,8 +48,11 @@ SRCS =	ctype/ft_isalnum.c \
 		ft_lst/ft_lstnew.c \
 		ft_lst/ft_lstsize.c
 
+VPATH = ctype:string:bsd_string:stdlib:ft_string:ft_put:ft_lst
+
 EXE = $(addprefix $(BIN_DIR)/, run)
-OBJ_FILES = $(addprefix $(OBJ_DIR)/, $(SRCS:.c=.o))
+OBJ_FILES = $(addprefix $(OBJ_DIR)/, $(notdir $(SRCS:.c=.o)))
+
 
 all: $(NAME)
 
@@ -60,7 +64,7 @@ $(OBJ_DIR):
 	@mkdir -p $@
 
 $(OBJ_DIR)/%.o: %.c libft.h | $(OBJ_DIR)
-	@$(CC) $(FLAGS) -c $< -o $@
+	@$(CC) $(FLAGS) -I . -c $< -o $@
 
 $(BIN_DIR):
 	@mkdir -p $@
